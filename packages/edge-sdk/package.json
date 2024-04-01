@@ -1,0 +1,27 @@
+{
+  "name": "@bcai/edge-sdk",
+  "version": "0.1.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/types.ts",
+  "sideEffects": false,
+  "license": "MIT",
+  "files": [
+    "dist/**/*",
+    "src/**/*",
+    "tsconfig.json",
+    "README.md",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "tsc --build --clean"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240402.0",
+    "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "@cfworker/uuid": "^1.12.4"
+  }
+}
