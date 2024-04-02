@@ -6,8 +6,8 @@ interface Env {
 
 async function handleRequest(request: Request, env: Env) {
 	const url = new URL(request.url);
-	url.hostname = '8fd081.myshopify.com';
-	url.protocol = 'https:';
+	const originalHost = url.hostname.replace(/^www\./i, '.');
+
 
 	const modifiedRequest = new Request(url.toString(), {
 		method: request.method,
@@ -28,7 +28,7 @@ async function handleRequest(request: Request, env: Env) {
 	// Set the X-BCAI cookie with the UUID
 	modifiedResponse.headers.append(
 		'Set-Cookie',
-		`_bcai_z=${bcaiUUID}; Path=/; Max-Age=31536000; SameSite=Lax;Domain=.june1stpartners.com;`
+		`_bcai_z=${bcaiUUID}; Path=/; Max-Age=31536000; SameSite=Lax;Domain=${originalHost};`
 	);
 
 	return modifiedResponse;
